@@ -1556,7 +1556,7 @@
                                         "label"
                                       ],
                                       "topRow": 4,
-                                      "bottomRow": 8,
+                                      "bottomRow": 9,
                                       "parentRowSpace": 10,
                                       "type": "TEXT_WIDGET",
                                       "hideCard": false,
@@ -7548,12 +7548,6 @@
                                 },
                                 {
                                   "key": "primaryColumns.ReOrderLevel.computedValue"
-                                },
-                                {
-                                  "key": "primaryColumns.OrderDetails.computedValue"
-                                },
-                                {
-                                  "key": "primaryColumns.Summary.computedValue"
                                 }
                               ],
                               "leftColumn": 0,
@@ -7593,7 +7587,7 @@
                               },
                               "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
                               "originalBottomRow": 101,
-                              "columnUpdatedAt": 1680930679571,
+                              "columnUpdatedAt": 1680931160266,
                               "defaultSelectedRowIndices": [
                                 0
                               ],
@@ -7635,9 +7629,7 @@
                                 "QtyInStock",
                                 "OrderAge",
                                 "ReOrderLevel",
-                                "customColumn2",
-                                "OrderDetails",
-                                "Summary"
+                                "customColumn2"
                               ],
                               "dynamicPropertyPathList": [
                                 {
@@ -8750,64 +8742,6 @@
                                   "sticky": "",
                                   "validation": {},
                                   "cellBackground": ""
-                                },
-                                "OrderDetails": {
-                                  "allowCellWrapping": false,
-                                  "index": 34,
-                                  "width": 150,
-                                  "originalId": "OrderDetails",
-                                  "id": "OrderDetails",
-                                  "alias": "OrderDetails",
-                                  "horizontalAlignment": "LEFT",
-                                  "verticalAlignment": "CENTER",
-                                  "columnType": "text",
-                                  "textColor": "",
-                                  "textSize": "0.875rem",
-                                  "fontStyle": "",
-                                  "enableFilter": true,
-                                  "enableSort": true,
-                                  "isVisible": true,
-                                  "isDisabled": false,
-                                  "isCellEditable": false,
-                                  "isEditable": false,
-                                  "isCellVisible": true,
-                                  "isDerived": false,
-                                  "label": "OrderDetails",
-                                  "isSaveVisible": true,
-                                  "isDiscardVisible": true,
-                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"OrderDetails\"]))}}",
-                                  "sticky": "",
-                                  "validation": {},
-                                  "cellBackground": ""
-                                },
-                                "Summary": {
-                                  "allowCellWrapping": false,
-                                  "index": 35,
-                                  "width": 150,
-                                  "originalId": "Summary",
-                                  "id": "Summary",
-                                  "alias": "Summary",
-                                  "horizontalAlignment": "LEFT",
-                                  "verticalAlignment": "CENTER",
-                                  "columnType": "number",
-                                  "textColor": "",
-                                  "textSize": "0.875rem",
-                                  "fontStyle": "",
-                                  "enableFilter": true,
-                                  "enableSort": true,
-                                  "isVisible": true,
-                                  "isDisabled": false,
-                                  "isCellEditable": false,
-                                  "isEditable": false,
-                                  "isCellVisible": true,
-                                  "isDerived": false,
-                                  "label": "Summary",
-                                  "isSaveVisible": true,
-                                  "isDiscardVisible": true,
-                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"Summary\"]))}}",
-                                  "sticky": "",
-                                  "validation": {},
-                                  "cellBackground": ""
                                 }
                               },
                               "onRowSelected": "{{get_order_details.run();\nget_orders.run();\nget_notes.run()\n}}",
@@ -9099,7 +9033,7 @@
               "dynamicHeight": "FIXED",
               "widgetId": "c7eiofx1fl",
               "accentColor": "{{appsmith.theme.colors.primaryColor}}",
-              "defaultTab": "{{appsmith.store?.access_token? \"Main\" : \"Main\"}}",
+              "defaultTab": "{{appsmith.store?.access_token? \"Main\" : \"Login\"}}",
               "shouldShowTabs": false,
               "tabsObj": {
                 "tab1": {
