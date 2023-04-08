@@ -7593,7 +7593,7 @@
                               },
                               "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
                               "originalBottomRow": 101,
-                              "columnUpdatedAt": 1680932470492,
+                              "columnUpdatedAt": 1680936124270,
                               "defaultSelectedRowIndices": [
                                 0
                               ],
@@ -7605,6 +7605,7 @@
                                 "CustomerName",
                                 "Qty",
                                 "MailType",
+                                "OrderDetails",
                                 "Id",
                                 "ProductDescription",
                                 "SubItemID",
@@ -7620,6 +7621,7 @@
                                 "Country",
                                 "depth",
                                 "OrderDate",
+                                "Summary",
                                 "PaymentMethod",
                                 "CustomerID",
                                 "JoiningDate",
@@ -7635,9 +7637,7 @@
                                 "QtyInStock",
                                 "OrderAge",
                                 "ReOrderLevel",
-                                "customColumn2",
-                                "OrderDetails",
-                                "Summary"
+                                "customColumn2"
                               ],
                               "dynamicPropertyPathList": [
                                 {
@@ -8787,7 +8787,7 @@
                                   "originalId": "Summary",
                                   "id": "Summary",
                                   "alias": "Summary",
-                                  "horizontalAlignment": "LEFT",
+                                  "horizontalAlignment": "RIGHT",
                                   "verticalAlignment": "CENTER",
                                   "columnType": "number",
                                   "textColor": "",
@@ -8804,7 +8804,7 @@
                                   "label": "Summary",
                                   "isSaveVisible": true,
                                   "isDiscardVisible": true,
-                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"Summary\"]))}}",
+                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"Summary\"].toFixed(2)))}}",
                                   "sticky": "",
                                   "validation": {},
                                   "cellBackground": ""
@@ -10043,6 +10043,21 @@
                 "async () => {\n  await get_user.run();\n  await get_user_department.run();\n  await get_order_details.run();\n  await get_orders.run();\n  await get_total_amount.run();\n}"
               ],
               "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "App_get_all_main_ordersCopy",
+              "name": "get_all_main_ordersCopy",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "Table1CopyCopy.pageOffset",
+                "Table1CopyCopy.pageSize",
+                "moment().format('YYYY-MM-DD')",
+                "moment().startOf('month').format('YYYY-MM-DD')"
+              ],
+              "timeoutInMillisecond": 10000
             },
             {
               "id": "App_get_user",
@@ -10063,33 +10078,6 @@
               "pluginType": "DB",
               "jsonPathKeys": [
                 "appsmith.store.clickedrow"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "App_get_all_main_ordersCopy",
-              "name": "get_all_main_ordersCopy",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
-                "Table1CopyCopy.pageOffset",
-                "moment().startOf('month').format('YYYY-MM-DD')",
-                "Table1CopyCopy.pageSize"
-              ],
-              "timeoutInMillisecond": 10000
-            },
-            {
-              "id": "App_get_orders",
-              "name": "get_orders",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [
-                "get_user_department.data[0].Department",
-                "Table1.pageSize",
-                "Table1.pageOffset"
               ],
               "timeoutInMillisecond": 10000
             }
@@ -10136,8 +10124,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
                 "get_user_department.data[0].Department",
+                "moment().format('YYYY-MM-DD')",
                 "moment().startOf('month').format('YYYY-MM-DD')"
               ],
               "timeoutInMillisecond": 10000
@@ -10149,8 +10137,20 @@
               "pluginType": "DB",
               "jsonPathKeys": [
                 "Table1Copy.pageOffset",
-                "get_user_department.data[0].Department",
-                "Table1Copy.pageSize"
+                "Table1Copy.pageSize",
+                "get_user_department.data[0].Department"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "App_get_orders",
+              "name": "get_orders",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "Table1.pageOffset",
+                "Table1.pageSize",
+                "get_user_department.data[0].Department"
               ],
               "timeoutInMillisecond": 10000
             }
@@ -10162,8 +10162,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
                 "get_user_department.data[0].Department",
+                "moment().format('YYYY-MM-DD')",
                 "moment().startOf('month').format('YYYY-MM-DD')"
               ],
               "timeoutInMillisecond": 10000
@@ -10174,8 +10174,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format(\"YYYY-MM-DD\")",
-                "get_user_department.data[0].Department"
+                "get_user_department.data[0].Department",
+                "moment().format(\"YYYY-MM-DD\")"
               ],
               "timeoutInMillisecond": 10000
             },
@@ -10195,8 +10195,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
                 "get_user_department.data[0].Department",
+                "moment().format('YYYY-MM-DD')",
                 "moment().startOf('month').format('YYYY-MM-DD')"
               ],
               "timeoutInMillisecond": 10000
@@ -10207,8 +10207,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format(\"YYYY-MM-DD\")",
-                "get_user_department.data[0].Department"
+                "get_user_department.data[0].Department",
+                "moment().format(\"YYYY-MM-DD\")"
               ],
               "timeoutInMillisecond": 10000
             },
@@ -10218,8 +10218,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format(\"YYYY-MM-DD\")",
-                "get_user_department.data[0].Department"
+                "get_user_department.data[0].Department",
+                "moment().format(\"YYYY-MM-DD\")"
               ],
               "timeoutInMillisecond": 10000
             },
@@ -10239,8 +10239,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
                 "get_user_department.data[0].Department",
+                "moment().format('YYYY-MM-DD')",
                 "moment().startOf('month').format('YYYY-MM-DD')"
               ],
               "timeoutInMillisecond": 10000
@@ -10251,8 +10251,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format(\"YYYY-MM-DD\")",
-                "get_user_department.data[0].Department"
+                "get_user_department.data[0].Department",
+                "moment().format(\"YYYY-MM-DD\")"
               ],
               "timeoutInMillisecond": 10000
             }
