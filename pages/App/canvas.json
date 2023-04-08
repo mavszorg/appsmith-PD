@@ -10042,7 +10042,9 @@
                 "async () => {\n  await get_user.run();\n  await get_user_department.run();\n  await get_order_details.run();\n  await get_orders.run();\n  await get_total_amount.run();\n}"
               ],
               "timeoutInMillisecond": 10000
-            },
+            }
+          ],
+          [
             {
               "id": "App_get_user",
               "name": "get_user",
@@ -10062,20 +10064,6 @@
               "pluginType": "DB",
               "jsonPathKeys": [
                 "appsmith.store.clickedrow"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "App_get_orders",
-              "name": "get_orders",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [
-                "get_user_department.data[0].Department",
-                "Table1.pageSize",
-                "Table1.pageOffset"
               ],
               "timeoutInMillisecond": 10000
             }
@@ -10153,6 +10141,18 @@
                 "moment().format('YYYY-MM-DD')",
                 "get_user_department.data[0].Department",
                 "moment().startOf('month').format('YYYY-MM-DD')"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "App_get_orders",
+              "name": "get_orders",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "get_user_department.data[0].Department",
+                "Table1.pageSize",
+                "Table1.pageOffset"
               ],
               "timeoutInMillisecond": 10000
             }
