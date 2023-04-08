@@ -1556,7 +1556,7 @@
                                         "label"
                                       ],
                                       "topRow": 4,
-                                      "bottomRow": 9,
+                                      "bottomRow": 8,
                                       "parentRowSpace": 10,
                                       "type": "TEXT_WIDGET",
                                       "hideCard": false,
@@ -7593,7 +7593,7 @@
                               },
                               "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
                               "originalBottomRow": 101,
-                              "columnUpdatedAt": 1678668591186,
+                              "columnUpdatedAt": 1680930679571,
                               "defaultSelectedRowIndices": [
                                 0
                               ],
@@ -7605,7 +7605,6 @@
                                 "CustomerName",
                                 "Qty",
                                 "MailType",
-                                "OrderDetails",
                                 "Id",
                                 "ProductDescription",
                                 "SubItemID",
@@ -7636,8 +7635,9 @@
                                 "QtyInStock",
                                 "OrderAge",
                                 "ReOrderLevel",
-                                "Summary",
-                                "customColumn2"
+                                "customColumn2",
+                                "OrderDetails",
+                                "Summary"
                               ],
                               "dynamicPropertyPathList": [
                                 {
@@ -7669,11 +7669,12 @@
                                 "InitialProdDescription": 266,
                                 "CustomerName": 208,
                                 "Country": 99,
-                                "ProductDescription": 228.25,
+                                "ProductDescription": 232.25,
                                 "WithIMB": 98,
                                 "customColumn2": 135,
                                 "Notes": 478,
-                                "OrderDetails": 498
+                                "OrderDetails": 498,
+                                "MailType": 105
                               },
                               "parentRowSpace": 10,
                               "hideCard": false,
@@ -8716,7 +8717,7 @@
                                   "label": "OrderAge",
                                   "isSaveVisible": true,
                                   "isDiscardVisible": true,
-                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"OrderAge\"] + ' h'))}}",
+                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"OrderAge\"] + ' day(s)'))}}",
                                   "sticky": "",
                                   "validation": {},
                                   "cellBackground": ""
@@ -9098,7 +9099,7 @@
               "dynamicHeight": "FIXED",
               "widgetId": "c7eiofx1fl",
               "accentColor": "{{appsmith.theme.colors.primaryColor}}",
-              "defaultTab": "{{appsmith.store?.access_token? \"Main\" : \"Login\"}}",
+              "defaultTab": "{{appsmith.store?.access_token? \"Main\" : \"Main\"}}",
               "shouldShowTabs": false,
               "tabsObj": {
                 "tab1": {
@@ -10046,6 +10047,19 @@
           ],
           [
             {
+              "id": "App_get_all_main_ordersCopy",
+              "name": "get_all_main_ordersCopy",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "moment().format('YYYY-MM-DD')",
+                "Table1CopyCopy.pageOffset",
+                "moment().startOf('month').format('YYYY-MM-DD')",
+                "Table1CopyCopy.pageSize"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
               "id": "App_get_user",
               "name": "get_user",
               "confirmBeforeExecute": false,
@@ -10100,9 +10114,7 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
-                "get_user_department.data[0].Department",
-                "moment().startOf('month').format('YYYY-MM-DD')"
+                "get_user_department.data[0].Department"
               ],
               "timeoutInMillisecond": 10000
             },
@@ -10124,23 +10136,9 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
                 "Table1Copy.pageOffset",
                 "get_user_department.data[0].Department",
-                "Table1Copy.pageSize",
-                "moment().startOf('month').format('YYYY-MM-DD')"
-              ],
-              "timeoutInMillisecond": 10000
-            },
-            {
-              "id": "App_get_all_main_ordersCopy",
-              "name": "get_all_main_ordersCopy",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [
-                "moment().format('YYYY-MM-DD')",
-                "get_user_department.data[0].Department",
-                "moment().startOf('month').format('YYYY-MM-DD')"
+                "Table1Copy.pageSize"
               ],
               "timeoutInMillisecond": 10000
             },
