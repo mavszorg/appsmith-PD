@@ -1,0 +1,11 @@
+UPDATE "PrinterLineItems"
+SET "Notes" = (
+  SELECT jsonb_build_object('comments', jsonb_agg(c.comment))
+  FROM (
+    SELECT jsonb_build_object('timestamp', (comment->>'timestamp')::timestamp, 'user', comment->>'user', 'comment', comment->>'comment') as comment
+    FROM jsonb_array_elements(COALESCE(("Notes"->'comments')::jsonb, '[]'::jsonb)) AS comments(comment)
+    UNION ALL
+    SELECT jsonb_build_object('timestamp', timezone('America/New_York', now()), 'user', '{{get_user.data.email.split("@")[0]}}:', 'comment', '{{Input1.text}}')
+  ) AS c
+)
+WHERE "Id" = {{appsmith.store.clickedrow}};

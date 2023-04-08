@@ -1,0 +1,43 @@
+{
+  "pages": [
+    {
+      "id": "Login",
+      "isDefault": true
+    },
+    {
+      "id": "App",
+      "isDefault": false
+    },
+    {
+      "id": "CreateAccount",
+      "isDefault": false
+    },
+    {
+      "id": "Summary",
+      "isDefault": false
+    }
+  ],
+  "viewMode": false,
+  "appIsExample": false,
+  "unreadCommentThreads": 0,
+  "clonedFromApplicationId": "63b393c7f276cd0745e9510c",
+  "color": "#C7F3E3",
+  "icon": "book",
+  "unpublishedAppLayout": {
+    "type": "FLUID"
+  },
+  "publishedAppLayout": {
+    "type": "FLUID"
+  },
+  "unpublishedCustomJSLibs": [],
+  "publishedCustomJSLibs": [],
+  "evaluationVersion": 2,
+  "applicationVersion": 2,
+  "embedSetting": {
+    "height": "1440px",
+    "width": "2560px",
+    "showNavigationBar": false
+  },
+  "isManualUpdate": false,
+  "deleted": false
+}

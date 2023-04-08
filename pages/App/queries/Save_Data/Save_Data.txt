@@ -1,0 +1,14 @@
+	UPDATE public."CustomerLineItems" SET
+    "OrderStatus" = '{{this.params.currentRow.OrderStatus}}'
+  WHERE "Id" = {{this.params.currentRow.Id}};
+	UPDATE public."CustomerLineItems" SET
+    "OrderStatus" = '{{this.params.currentRow.OrderStatus}}'
+  WHERE "SubItemID" = {{this.params.currentRow.Id}};
+	
+	UPDATE public."PrinterLineItems" SET
+    "OrderStatus" = '{{this.params.currentRow.OrderStatus}}', "DeliveryDate" = '{{moment().format('YYYY-MM-DD')}}'
+  WHERE "Id" = {{this.params.currentRow.Id}};
+		
+		UPDATE public."PrinterLineItems" SET
+    "OrderStatus" = '{{this.params.currentRow.OrderStatus}}', "DeliveryDate" = '{{moment().format('YYYY-MM-DD')}}'
+  WHERE "SubItemID" = {{this.params.currentRow.Id}};

@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "StoreActions",
+    "pageId": "Summary",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "Summary_StoreActions",
+  "deleted": false,
+  "gitSyncId": "63d17c6f516f8c24ae46454b_64081636f1eb7e1910472644"
+}

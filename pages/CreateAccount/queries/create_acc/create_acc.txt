@@ -1,0 +1,4 @@
+{
+  "email": "{{Text3.text}}",
+  "password": "{{appsmith.store.newpw}}"
+}

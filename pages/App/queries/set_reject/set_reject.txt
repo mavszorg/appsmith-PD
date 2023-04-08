@@ -1,0 +1,15 @@
+	UPDATE "PrinterLineItems"
+  SET "OrderStatus" = 'REJECTED'
+  WHERE "Id" = {{ Table1.selectedRow.Id }};
+	
+	UPDATE "PrinterLineItems"
+  SET "OrderStatus" = 'REJECTED'
+  WHERE "SubItemID" = {{ Table1.selectedRow.Id }};
+	
+	UPDATE "CustomerLineItems"
+  SET "OrderStatus" = 'REJECTED'
+  WHERE "Id" = {{ Table1.selectedRow.Id }};
+	
+	UPDATE "CustomerLineItems"
+  SET "OrderStatus" = 'REJECTED'
+  WHERE "SubItemID" = {{ Table1.selectedRow.Id }};

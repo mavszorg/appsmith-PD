@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "OnpageLoad",
+    "pageId": "CreateAccount",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "CreateAccount_OnpageLoad",
+  "deleted": false,
+  "gitSyncId": "63d17c6f516f8c24ae46454b_640534f5b956c26882ace09d"
+}

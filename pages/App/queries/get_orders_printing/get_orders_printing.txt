@@ -1,0 +1,8 @@
+SELECT p."Id", p."InvoiceID", p."PrinterPriceID", p."Qty", p."Rate", p."Amount", p."InitialProdDescription", p."SubItemID", p."Printer", i."InvoiceDate", i."InvoiceStatus", p."OrderStatus", c1."OrgID", c1."CustomerName", c1."Country", c1."WithIMB", p2."ProductDescription",p."Notes" ,ROUND(DATE_PART('hours', NOW() - i."InvoiceDate")) AS "Order Age"
+FROM "public"."PrinterLineItems" p 
+	INNER JOIN "public"."Invoice" i ON ( i."InvoiceID" = p."InvoiceID"  )  
+	INNER JOIN "public"."Customers" c1 ON ( c1."Id" = i."CustomerID"  )  
+	INNER JOIN "public"."PrinterPrice" p1 ON ( p1."Id" = p."PrinterPriceID"  )  
+	INNER JOIN "public"."Products" p2 ON ( p2."Id" = p1."ProductID"  )  
+
+WHERE p."SubItemID" is NULL AND p."OrderStatus" ='PRINTING'   AND p."Printer"='{{get_user_department.data[0].Department}}' AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') >= DATE '{{moment().startOf('month').format('YYYY-MM-DD')}}' AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') <= DATE '{{moment().format('YYYY-MM-DD')}}' order by p."Id" ASC

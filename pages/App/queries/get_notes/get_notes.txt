@@ -1,0 +1,6 @@
+SELECT jsonb_agg(c ORDER BY (c->>'timestamp')::timestamp DESC) as comments
+FROM (
+  SELECT jsonb_array_elements(("Notes"->'comments')::jsonb) as c
+  FROM "PrinterLineItems"
+  WHERE "Id" = {{appsmith.store.clickedrow}}
+) t;

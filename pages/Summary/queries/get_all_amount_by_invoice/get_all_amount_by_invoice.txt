@@ -1,0 +1,16 @@
+WITH RECURSIVE item_tree ("Id", "SubItemID", "InvoiceID", "Amount","Qty","InitialProdDescription" , "PrinterPriceID", "Rate", "Printer" ) AS (
+  SELECT "Id", "SubItemID", "InvoiceID" ,"Amount" ,"Qty","InitialProdDescription" , "PrinterPriceID", "Rate", "Printer"
+  FROM "PrinterLineItems" WHERE "SubItemID" IS NULL
+  UNION ALL
+  SELECT oi."Id", oi."SubItemID", oi."InvoiceID", oi."Amount" , oi."Qty", oi."InitialProdDescription" ,  oi."PrinterPriceID",  oi."Rate",  oi."Printer"
+  FROM "PrinterLineItems" oi
+  JOIN item_tree tt ON oi."SubItemID" = tt."Id"
+)
+SELECT tt."InvoiceID",  SUM(tt."Amount") AS "TotalAmount"
+FROM item_tree tt
+INNER JOIN "public"."Invoice" i ON i."InvoiceID" = tt."InvoiceID" 
+INNER JOIN  "Customers" c1 ON ( c1."Id" = i."CustomerID"  )  
+INNER JOIN  "PrinterPrice" p1 ON ( p1."Id" = tt."PrinterPriceID"  )  
+INNER JOIN  "Products" p2 ON ( p2."Id" = p1."ProductID"  )
+WHERE tt."Printer" = '{{get_user_department.data[0].Department}}'   AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') >= DATE '{{moment(DatePicker1.selectedDate).format("YYYY-MM-DD")}}' AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') <= DATE '{{moment(DatePicker2.selectedDate).format("YYYY-MM-DD")}}' 
+GROUP BY  tt."InvoiceID" ORDER BY  tt."InvoiceID" ASC

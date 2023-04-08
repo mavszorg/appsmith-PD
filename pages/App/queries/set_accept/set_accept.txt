@@ -1,0 +1,15 @@
+	UPDATE "PrinterLineItems"
+  SET "OrderStatus" = 'PRINTING'
+  WHERE "Id" = {{ Table1.selectedRow.Id }};
+	
+	UPDATE "PrinterLineItems"
+  SET "OrderStatus" = 'PRINTING'
+  WHERE "SubItemID" = {{ Table1.selectedRow.Id }};
+	
+	UPDATE "CustomerLineItems"
+  SET "OrderStatus" = 'PRINTING'
+  WHERE "Id" = {{ Table1.selectedRow.Id }};
+	
+	UPDATE "CustomerLineItems"
+  SET "OrderStatus" = 'PRINTING'
+  WHERE "SubItemID" = {{ Table1.selectedRow.Id }};
