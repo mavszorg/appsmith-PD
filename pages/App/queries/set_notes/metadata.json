@@ -18,7 +18,7 @@
       "timeoutInMillisecond": 10000,
       "paginationType": "NONE",
       "encodeParamsToggle": true,
-      "body": "UPDATE \"PrinterLineItems\"\nSET \"Notes\" = (\n  SELECT jsonb_build_object('comments', jsonb_agg(c.comment))\n  FROM (\n    SELECT jsonb_build_object('timestamp', (comment->>'timestamp')::timestamp, 'user', comment->>'user', 'comment', comment->>'comment') as comment\n    FROM jsonb_array_elements(COALESCE((\"Notes\"->'comments')::jsonb, '[]'::jsonb)) AS comments(comment)\n    UNION ALL\n    SELECT jsonb_build_object('timestamp', timezone('America/New_York', now()), 'user', '{{get_user.data.email.split(\"@\")[0]}}:', 'comment', '{{Input1.text}}')\n  ) AS c\n)\nWHERE \"Id\" = {{appsmith.store.clickedrow}};\n",
+      "body": "UPDATE \"PrinterLineItems\"\nSET \"Notes\" = (\n  SELECT jsonb_build_object('comments', jsonb_agg(c.comment))\n  FROM (\n    SELECT jsonb_build_object('timestamp', (comment->>'timestamp')::timestamp, 'user', comment->>'user', 'comment', comment->>'comment') as comment\n    FROM jsonb_array_elements(COALESCE((\"Notes\"->'comments')::jsonb, '[]'::jsonb)) AS comments(comment)\n    UNION ALL\n    SELECT jsonb_build_object('timestamp', timezone('America/New_York', now()), 'user', '{{get_user.data.email.split(\"@\")[0]}}:', 'comment', '{{Input1.text}}')\n  ) AS c\n)\nWHERE \"Id\" = {{appsmith.store.clickedrow}};",
       "selfReferencingDataPaths": [],
       "pluginSpecifiedTemplates": [
         {

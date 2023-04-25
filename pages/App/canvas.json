@@ -13,13 +13,13 @@
           "detachFromLayout": true,
           "widgetId": "0",
           "topRow": 0,
-          "bottomRow": 1270,
+          "bottomRow": 1350,
           "containerStyle": "none",
           "snapRows": 125,
           "parentRowSpace": 1,
           "type": "CANVAS_WIDGET",
           "canExtend": true,
-          "version": 77,
+          "version": 78,
           "minHeight": 1292,
           "parentColumnSpace": 1,
           "dynamicTriggerPathList": [],
@@ -941,7 +941,7 @@
                               "originalTopRow": 0,
                               "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
                               "maxDynamicHeight": 9000,
-                              "originalBottomRow": 4,
+                              "originalBottomRow": 5,
                               "fontSize": "1rem",
                               "minDynamicHeight": 4
                             },
@@ -1247,7 +1247,7 @@
                                       "bottomRow": 8,
                                       "type": "TEXT_WIDGET",
                                       "hideCard": false,
-                                      "animateLoading": true,
+                                      "animateLoading": false,
                                       "dynamicTriggerPathList": [],
                                       "overflow": "NONE",
                                       "fontFamily": "Rubik",
@@ -1498,7 +1498,7 @@
                                       "leftColumn": 7,
                                       "dynamicBindingPathList": [],
                                       "truncateButtonColor": "#FFC13D",
-                                      "text": "Daily Live Orders:",
+                                      "text": "Daily Live Orders :",
                                       "key": "deco66gubs",
                                       "labelTextSize": "0.875rem",
                                       "rightColumn": 47,
@@ -1560,7 +1560,7 @@
                                       "parentRowSpace": 10,
                                       "type": "TEXT_WIDGET",
                                       "hideCard": false,
-                                      "animateLoading": true,
+                                      "animateLoading": false,
                                       "overflow": "NONE",
                                       "fontFamily": "Rubik",
                                       "parentColumnSpace": 3.919921875,
@@ -3731,9 +3731,6 @@
                                   "key": "primaryColumns.OrderStatus.cellBackground"
                                 },
                                 {
-                                  "key": "primaryColumns.Notes.computedValue"
-                                },
-                                {
                                   "key": "primaryColumns.customColumn2.buttonColor"
                                 },
                                 {
@@ -3753,6 +3750,9 @@
                                 },
                                 {
                                   "key": "primaryColumns.customColumn4.boxShadow"
+                                },
+                                {
+                                  "key": "primaryColumns.Notes.computedValue"
                                 },
                                 {
                                   "key": "primaryColumns.OrderDetails.computedValue"
@@ -3798,7 +3798,7 @@
                               },
                               "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
                               "originalBottomRow": 101,
-                              "columnUpdatedAt": 1680205152521,
+                              "columnUpdatedAt": 1682428052441,
                               "defaultSelectedRowIndices": [
                                 0
                               ],
@@ -3810,7 +3810,6 @@
                                 "customColumn1",
                                 "OrderStatus",
                                 "Id",
-                                "OrderDetails",
                                 "ProductDescription",
                                 "CustomerName",
                                 "SubItemID",
@@ -3824,11 +3823,12 @@
                                 "InvoiceStatus",
                                 "InvoiceDate",
                                 "OrgID",
-                                "Notes",
-                                "Summary",
                                 "WithIMB",
+                                "Country",
+                                "Notes",
                                 "customColumn2",
-                                "Country"
+                                "OrderDetails",
+                                "Summary"
                               ],
                               "dynamicPropertyPathList": [
                                 {
@@ -3864,7 +3864,7 @@
                                 "Qty": 65.99999999999999,
                                 "customColumn1": 60,
                                 "InitialProdDescription": 266,
-                                "CustomerName": 208,
+                                "CustomerName": 160,
                                 "Country": 99,
                                 "ProductDescription": 228.25,
                                 "WithIMB": 98,
@@ -3888,12 +3888,6 @@
                                 },
                                 {
                                   "key": "primaryColumns.Id.onOptionChange"
-                                },
-                                {
-                                  "key": "primaryColumns.Notes.onSubmit"
-                                },
-                                {
-                                  "key": "primaryColumns.Notes.onOptionChange"
                                 },
                                 {
                                   "key": "primaryColumns.customColumn2.onClick"
@@ -3935,7 +3929,8 @@
                                   "sticky": "",
                                   "validation": {},
                                   "cellBackground": "",
-                                  "onOptionChange": "{{StoreActions.myFun2(currentRow)}}"
+                                  "onOptionChange": "{{StoreActions.myFun2(currentRow)}}",
+                                  "allowSameOptionsInNewRow": true
                                 },
                                 "SubItemID": {
                                   "allowCellWrapping": false,
@@ -4010,7 +4005,7 @@
                                   "fontStyle": "",
                                   "enableFilter": true,
                                   "enableSort": true,
-                                  "isVisible": false,
+                                  "isVisible": true,
                                   "isDisabled": false,
                                   "isCellEditable": false,
                                   "isEditable": false,
@@ -4256,7 +4251,8 @@
                                   "validation": {},
                                   "cellBackground": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( function(){\nlet colors = {\n\t'INPROCESS':'Orange',\n\t'DELIVERED':'LightGreen',\n\t'PENDING':'Red',\n\t'CANCELLED':'GRAY'\n};\nreturn colors[currentRow.OrderStatus]\n}()))}}",
                                   "selectOptions": "[\n  {\n    \"label\": \"DELIVERED\",\n    \"value\": \"DELIVERED\"\n  },\n  {\n    \"label\": \"PENDING\",\n    \"value\": \"PENDING\"\n  },\n  {\n    \"label\": \"CANCELLED\",\n    \"value\": \"CANCELLED\"\n  }\n]",
-                                  "onOptionChange": "{{StoreActions.myFun1(currentRow)}}"
+                                  "onOptionChange": "{{StoreActions.myFun1(currentRow)}}",
+                                  "allowSameOptionsInNewRow": true
                                 },
                                 "CustomerName": {
                                   "allowCellWrapping": false,
@@ -4432,37 +4428,6 @@
                                   "validation": {},
                                   "cellBackground": ""
                                 },
-                                "Notes": {
-                                  "allowCellWrapping": false,
-                                  "index": 17,
-                                  "width": 150,
-                                  "originalId": "Notes",
-                                  "id": "Notes",
-                                  "alias": "Notes",
-                                  "horizontalAlignment": "LEFT",
-                                  "verticalAlignment": "CENTER",
-                                  "columnType": "text",
-                                  "textColor": "",
-                                  "textSize": "0.875rem",
-                                  "fontStyle": "",
-                                  "enableFilter": true,
-                                  "enableSort": true,
-                                  "isVisible": false,
-                                  "isDisabled": false,
-                                  "isCellEditable": true,
-                                  "isEditable": true,
-                                  "isCellVisible": true,
-                                  "isDerived": false,
-                                  "label": "Notes",
-                                  "isSaveVisible": true,
-                                  "isDiscardVisible": true,
-                                  "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"Notes\"]))}}",
-                                  "sticky": "",
-                                  "validation": {},
-                                  "cellBackground": "",
-                                  "onSubmit": "{{StoreActions.myFun2(currentRow)}}",
-                                  "onOptionChange": "{{StoreActions.myFun2(currentRow)}}"
-                                },
                                 "customColumn2": {
                                   "allowCellWrapping": false,
                                   "index": 10,
@@ -4596,8 +4561,39 @@
                                   "buttonVariant": "SECONDARY",
                                   "onClick": "{{set_reject.run(() => {get_orders.run(),get_all_amount_by_item.run(),get_all_main_orders.run(),showAlert('Order rejected.','info')}, () => {})}}"
                                 },
+                                "Notes": {
+                                  "allowCellWrapping": false,
+                                  "allowSameOptionsInNewRow": true,
+                                  "index": 17,
+                                  "width": 150,
+                                  "originalId": "Notes",
+                                  "id": "Notes",
+                                  "alias": "Notes",
+                                  "horizontalAlignment": "LEFT",
+                                  "verticalAlignment": "CENTER",
+                                  "columnType": "text",
+                                  "textColor": "",
+                                  "textSize": "0.875rem",
+                                  "fontStyle": "",
+                                  "enableFilter": true,
+                                  "enableSort": true,
+                                  "isVisible": false,
+                                  "isDisabled": false,
+                                  "isCellEditable": false,
+                                  "isEditable": false,
+                                  "isCellVisible": true,
+                                  "isDerived": false,
+                                  "label": "Notes",
+                                  "isSaveVisible": true,
+                                  "isDiscardVisible": true,
+                                  "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"Notes\"]))}}",
+                                  "sticky": "",
+                                  "validation": {},
+                                  "cellBackground": ""
+                                },
                                 "OrderDetails": {
                                   "allowCellWrapping": false,
+                                  "allowSameOptionsInNewRow": true,
                                   "index": 18,
                                   "width": 150,
                                   "originalId": "OrderDetails",
@@ -4627,6 +4623,7 @@
                                 },
                                 "Summary": {
                                   "allowCellWrapping": false,
+                                  "allowSameOptionsInNewRow": true,
                                   "index": 19,
                                   "width": 150,
                                   "originalId": "Summary",
@@ -4836,7 +4833,7 @@
                               },
                               "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
                               "originalBottomRow": 116,
-                              "columnUpdatedAt": 1678602050108,
+                              "columnUpdatedAt": 1682340430298,
                               "defaultSelectedRowIndices": [
                                 0
                               ],
@@ -6273,7 +6270,8 @@
                                   "sticky": "",
                                   "validation": {},
                                   "cellBackground": "",
-                                  "onOptionChange": "{{StoreActions.myFun2(currentRow)}}"
+                                  "onOptionChange": "{{StoreActions.myFun2(currentRow)}}",
+                                  "allowSameOptionsInNewRow": true
                                 },
                                 "SubItemID": {
                                   "allowCellWrapping": false,
@@ -6594,7 +6592,8 @@
                                   "validation": {},
                                   "cellBackground": "{{Table1Copy.processedTableData.map((currentRow, currentIndex) => ( function(){\nlet colors = {\n\t'PRINTING':'YELLOW',\n\t'DELIVERED':'LightGreen',\n\t'PENDING':'Red',\n\t'CANCELLED':'GRAY'\n};\nreturn colors[currentRow.OrderStatus]\n}()))}}",
                                   "selectOptions": "[\n  {\n    \"label\": \"DELIVERED\",\n    \"value\": \"DELIVERED\"\n  },\n  {\n    \"label\": \"PENDING\",\n    \"value\": \"PENDING\"\n  },\n  {\n    \"label\": \"CANCELLED\",\n    \"value\": \"CANCELLED\"\n  }\n]",
-                                  "onOptionChange": "{{StoreActions.myFun1(currentRow)}}"
+                                  "onOptionChange": "{{StoreActions.myFun1(currentRow)}}",
+                                  "allowSameOptionsInNewRow": true
                                 },
                                 "CustomerName": {
                                   "allowCellWrapping": false,
@@ -7593,7 +7592,7 @@
                               },
                               "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
                               "originalBottomRow": 101,
-                              "columnUpdatedAt": 1680936124270,
+                              "columnUpdatedAt": 1681238122491,
                               "defaultSelectedRowIndices": [
                                 0
                               ],
@@ -7605,7 +7604,6 @@
                                 "CustomerName",
                                 "Qty",
                                 "MailType",
-                                "OrderDetails",
                                 "Id",
                                 "ProductDescription",
                                 "SubItemID",
@@ -7621,7 +7619,6 @@
                                 "Country",
                                 "depth",
                                 "OrderDate",
-                                "Summary",
                                 "PaymentMethod",
                                 "CustomerID",
                                 "JoiningDate",
@@ -7637,7 +7634,9 @@
                                 "QtyInStock",
                                 "OrderAge",
                                 "ReOrderLevel",
-                                "customColumn2"
+                                "customColumn2",
+                                "OrderDetails",
+                                "Summary"
                               ],
                               "dynamicPropertyPathList": [
                                 {
@@ -7726,7 +7725,8 @@
                                   "sticky": "",
                                   "validation": {},
                                   "cellBackground": "",
-                                  "onOptionChange": "{{StoreActions.myFun2(currentRow)}}"
+                                  "onOptionChange": "{{StoreActions.myFun2(currentRow)}}",
+                                  "allowSameOptionsInNewRow": true
                                 },
                                 "SubItemID": {
                                   "allowCellWrapping": false,
@@ -8047,7 +8047,8 @@
                                   "validation": {},
                                   "cellBackground": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( function(){\nlet colors = {\n\t'PRINTING':'YELLOW',\n\t'DELIVERED':'LightGreen',\n\t'PENDING':'Red',\n\t'CANCELLED':'GRAY'\n};\nreturn colors[currentRow.OrderStatus]\n}()))}}",
                                   "selectOptions": "[\n  {\n    \"label\": \"DELIVERED\",\n    \"value\": \"DELIVERED\"\n  },\n  {\n    \"label\": \"PENDING\",\n    \"value\": \"PENDING\"\n  },\n  {\n    \"label\": \"CANCELLED\",\n    \"value\": \"CANCELLED\"\n  }\n]",
-                                  "onOptionChange": "{{StoreActions.myFun1(currentRow)}}"
+                                  "onOptionChange": "{{StoreActions.myFun1(currentRow)}}",
+                                  "allowSameOptionsInNewRow": true
                                 },
                                 "CustomerName": {
                                   "allowCellWrapping": false,
@@ -8787,7 +8788,7 @@
                                   "originalId": "Summary",
                                   "id": "Summary",
                                   "alias": "Summary",
-                                  "horizontalAlignment": "RIGHT",
+                                  "horizontalAlignment": "LEFT",
                                   "verticalAlignment": "CENTER",
                                   "columnType": "number",
                                   "textColor": "",
@@ -8804,7 +8805,7 @@
                                   "label": "Summary",
                                   "isSaveVisible": true,
                                   "isDiscardVisible": true,
-                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"Summary\"].toFixed(2)))}}",
+                                  "computedValue": "{{Table1CopyCopy.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"Summary\"]))}}",
                                   "sticky": "",
                                   "validation": {},
                                   "cellBackground": ""
@@ -10029,7 +10030,7 @@
               "confirmBeforeExecute": false,
               "pluginType": "JS",
               "jsonPathKeys": [
-                "async () => {\n  setInterval(() => {\n    (get_user.run(), get_orders.run(), get_user_department.run(), get_notes.run(), get_all_amount_by_item.run(), get_all_amount_by_itemCopy.run(), get_all_main_orders.run(), get_all_main_ordersCopy.run(), get_orders.run(), get_all_amount_by_item.run());\n  }, 2000, \"autoupdate\");\n}"
+                "async () => {\n  setInterval(() => {\n    (get_user.run(), get_orders.run(), get_user_department.run(), get_notes.run(), get_all_amount_by_item.run(), get_all_amount_by_itemCopy.run(), get_all_main_orders.run(), get_all_main_ordersCopy.run(), get_all_Live_orders_count.run(), get_allmain_orders_count_today.run(), get_orders.run(), get_all_amount_by_item.run());\n  }, 2000, \"autoupdate\");\n}"
               ],
               "timeoutInMillisecond": 10000
             },
@@ -10052,9 +10053,9 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
+                "moment().format('YYYY-MM-DD')",
                 "Table1CopyCopy.pageOffset",
                 "Table1CopyCopy.pageSize",
-                "moment().format('YYYY-MM-DD')",
                 "moment().startOf('month').format('YYYY-MM-DD')"
               ],
               "timeoutInMillisecond": 10000
@@ -10148,9 +10149,9 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "Table1.pageOffset",
+                "get_user_department.data[0].Department",
                 "Table1.pageSize",
-                "get_user_department.data[0].Department"
+                "Table1.pageOffset"
               ],
               "timeoutInMillisecond": 10000
             }
@@ -10162,8 +10163,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "get_user_department.data[0].Department",
                 "moment().format('YYYY-MM-DD')",
+                "get_user_department.data[0].Department",
                 "moment().startOf('month').format('YYYY-MM-DD')"
               ],
               "timeoutInMillisecond": 10000
@@ -10239,8 +10240,8 @@
               "confirmBeforeExecute": false,
               "pluginType": "DB",
               "jsonPathKeys": [
-                "get_user_department.data[0].Department",
                 "moment().format('YYYY-MM-DD')",
+                "get_user_department.data[0].Department",
                 "moment().startOf('month').format('YYYY-MM-DD')"
               ],
               "timeoutInMillisecond": 10000

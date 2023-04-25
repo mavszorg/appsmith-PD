@@ -5,4 +5,4 @@ FROM "public"."PrinterLineItems" p
 	INNER JOIN "public"."PrinterPrice" p1 ON ( p1."Id" = p."PrinterPriceID"  )  
 	INNER JOIN "public"."Products" p2 ON ( p2."Id" = p1."ProductID"  )  
 
-WHERE p."SubItemID" is NULL   AND p."Printer"='{{get_user_department.data[0].Department}}'  AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') >= DATE '{{moment().startOf('month').format('YYYY-MM-DD')}}' AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') <= DATE '{{moment().format('YYYY-MM-DD')}}'
+WHERE p."SubItemID" is NULL AND p."OrderStatus" NOT IN ('REJECTED') AND p."Printer"='{{get_user_department.data[0].Department}}'  AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') >= DATE '{{moment().startOf('month').format('YYYY-MM-DD')}}' AND to_date(cast(i."InvoiceDate" as TEXT),'YYYY-MM-DD') <= DATE '{{moment().format('YYYY-MM-DD')}}'

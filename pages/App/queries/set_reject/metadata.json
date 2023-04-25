@@ -18,7 +18,7 @@
       "timeoutInMillisecond": 10000,
       "paginationType": "NONE",
       "encodeParamsToggle": true,
-      "body": "\tUPDATE \"PrinterLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"Id\" = {{ Table1.selectedRow.Id }};\n\t\n\tUPDATE \"PrinterLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"SubItemID\" = {{ Table1.selectedRow.Id }};\n\t\n\tUPDATE \"CustomerLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"Id\" = {{ Table1.selectedRow.Id }};\n\t\n\tUPDATE \"CustomerLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"SubItemID\" = {{ Table1.selectedRow.Id }};\n",
+      "body": "\tUPDATE \"PrinterLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"Id\" = {{ Table1.triggeredRow.Id }};\n\t\n\tUPDATE \"PrinterLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"SubItemID\" = {{Table1.triggeredRow.Id }};\n\t\n\tUPDATE \"CustomerLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"Id\" = {{ Table1.triggeredRow.Id}};\n\t\n\tUPDATE \"CustomerLineItems\"\n  SET \"OrderStatus\" = 'REJECTED'\n  WHERE \"SubItemID\" = {{ Table1.triggeredRow.Id }};\n",
       "selfReferencingDataPaths": [],
       "pluginSpecifiedTemplates": [
         {
@@ -36,7 +36,9 @@
     "invalids": [],
     "messages": [],
     "jsonPathKeys": [
-      " Table1.selectedRow.Id "
+      " Table1.triggeredRow.Id",
+      " Table1.triggeredRow.Id ",
+      "Table1.triggeredRow.Id "
     ],
     "userSetOnLoad": false,
     "confirmBeforeExecute": false,
